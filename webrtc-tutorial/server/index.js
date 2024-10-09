@@ -44,6 +44,11 @@ io.on('connection', (socket) => {
         const sct_id = emailToSocketMapping.get(emailId)
         socket.to(sct_id).emit('incomming-call',{from:fromEmail,offer})
     })
+    socket.on('call-accepted',data=>{
+       const  {emailId,ans}=data
+       const socketID=emailToSocketMapping.get(emailId)
+       socket.to(socketID).emit('call-accepted',{ans})
+    })
   });
 
   socket.on('disconnect', () => {

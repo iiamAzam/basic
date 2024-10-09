@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSocket }  from '../providers/Socket'
 
@@ -8,12 +8,15 @@ export default function Home() {
      const Navigate=useNavigate()
      const { socket }=useSocket()
 
-     const handlejoined=({roomId})=>{
+     const handlejoined=useCallback(({roomId})=>{
               Navigate(`/room/${roomId}`)
-     }
-
+     },[Navigate])
+     
      useEffect(()=>{
         socket.on("joined-room",handlejoined)
+        return ()=>{
+          socket.off("joined-room",handlejoined)
+        }
      })
     
     const onsubmit=()=>{
