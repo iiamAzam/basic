@@ -5,13 +5,16 @@ import { UsePeer } from '../providers/Peer'
 
 
 
+
+
+
 function Room() { 
      const { socket }=useSocket()
      const [mystream, setmystream]=useState(null)
      const [remotemail,setremoteemail]=useState(null)
     
     const {peer,creatOffer,creatanswer,setremoteanswer,sendstream,remotestream}=UsePeer();
-      
+      console.log(remotestream)
      const hadleNewuserjoined=useCallback(async(data)=>{
             const  {emailId}=data
             const offer= await creatOffer();
@@ -37,23 +40,44 @@ function Room() {
       
       const getUserMediaStream=useCallback(async()=>{
                 const stream = await  navigator.mediaDevices.getUserMedia({audio:true,video:true})
-                console.log(stream)
+               
                 setmystream(stream)
       },[])
 
       const hadlenegotiate=useCallback(async()=>{
         const localoffer= await peer.createOffer() ;
-        
-        socket.emit('call-user',{ emailID: remotemail , offer:localoffer })
+        socket.emit('peer-nego',{ emailID: remotemail , offer:localoffer })
+
     },[ remotemail, socket,peer])
+    const handlenego=useCallback(async(data)=>{
+      const {from,offer}=data
+      setremoteemail(from)
+      const ans = await creatanswer(offer)
+      socket.emit('peer-accepted', {emailId:from,ans})
+      console.log(from)
+
+},[creatanswer, socket])
+
+const handlenagoans=useCallback( async(data)=>{
+      const {ans}=data
+      await setremoteanswer(ans)
+},[setremoteanswer])
 
       useEffect (()=>{
+      
         peer.addEventListener('negotiationneeded',hadlenegotiate)
+        console.log('nag,solving')
+        socket.on('peer-nego',handlenego)
+        socket.on('peer-accepted',handlenagoans)
+
         return ()=>{
+          socket.off('peer-nego',handlenego)
+          socket.off('peer-accepted',handlenagoans)
           peer.removeEventListener('negotiationneeded',hadlenegotiate)
         }
-      },[hadlenegotiate,peer])
+      },[hadlenegotiate, handlenagoans, handlenego, peer, socket])
 
+      
 
 
      useEffect(()=>{
@@ -64,9 +88,11 @@ function Room() {
             socket.off("joined-client",hadleNewuserjoined)
             socket.off('incomming-call',Handleincommingcall)
             socket.off('call-accepted',hadleCallAccepted)
+           
+
           }
 
-        },[socket,hadleNewuserjoined,Handleincommingcall,hadleCallAccepted])
+        },[socket, hadleNewuserjoined, Handleincommingcall, hadleCallAccepted, handlenego, handlenagoans])
 
 
     useEffect(()=>{

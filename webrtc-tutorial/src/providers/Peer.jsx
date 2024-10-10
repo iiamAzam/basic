@@ -22,7 +22,7 @@ function Peer(prop) {
     ),[])
 
     const creatOffer = async ()=>{
-        
+    
      const offer= await peer.createOffer();
         await peer.setLocalDescription(offer)
       return offer
@@ -43,7 +43,6 @@ const setremoteanswer=async(ans)=>{
 }
 
 const sendstream = async(stream)=>{
-    console.log(stream)
     const tracks =  await stream.getTracks();
     
      for(const track of  tracks){
@@ -54,8 +53,9 @@ const sendstream = async(stream)=>{
 const handleTrackevent=useCallback((ev)=>{
     const streams =ev.streams;
     setremotestream(streams[0])
-
-},[])
+    
+    console.log(remotestream)
+},[remotestream])
 
    useEffect(()=>{
         peer.addEventListener('track',handleTrackevent)

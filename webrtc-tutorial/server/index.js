@@ -49,12 +49,27 @@ io.on('connection', (socket) => {
        const socketID=emailToSocketMapping.get(emailId)
        socket.to(socketID).emit('call-accepted',{ans})
     })
+    socket.on('peer-nego', data=>{
+      const {emailId,offer}=data
+      const socketID=emailToSocketMapping.get(emailId)
+      const socketemailfofsender=sockettoemailmapping.get(socket.id)
+      socket.to(socketID).emit('peer-nego',{ from: socketemailfofsender, offer })
+    })
+    socket.on('peer-accepted',data=>{
+         const  {emailId,ans}=data
+         const socketId=emailToSocketMapping.get(emailId)
+         socket.to(socketId).emit('peer-accepted',{ans})
+    })
+
   });
 
   socket.on('disconnect', () => {
     console.log(`User disconnected: ${socket.id}`);
     // Handle user disconnect logic if needed (e.g., remove from the mapping)
   });
+  
+
+
 });
 
 // Listen for both HTTP and WebSocket connections on port 8001
