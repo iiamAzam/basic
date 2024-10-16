@@ -3,7 +3,7 @@ import './App.css'
 import Nodeinp from './nodeinp'
 import Nodelist from './Nodelist'
 type Todo={
-  id:string,
+  id:number,
   text:string
 }
 function App() {
@@ -18,9 +18,8 @@ function App() {
           localStorage.setItem('Todo', JSON.stringify(todoarr))
       },[todoarr])
       
-    function   deletetodo(id:string):void{
-              const  newtodo:Todo[]=todoarr.filter((e)=>e.id!==id)
-              settodoarr(newtodo)
+    function   deletetodo(id):void{
+            let letnewtodo:Todo[]=todoarr.filter((e)=>e.id!==id)
       }
 
 
@@ -32,7 +31,7 @@ function App() {
 
   return (
     <>
-     <div className='' >
+     <div className='bg-slate-600' >
       <Nodeinp
       settodoarr={settoo}
       />
@@ -42,8 +41,8 @@ function App() {
               <Nodelist
                   key={index}
                   text={e.text}
-                  texid={e.id}
-                  deleteTodo={deletetodo}
+                
+              
               />
            ))
         }
