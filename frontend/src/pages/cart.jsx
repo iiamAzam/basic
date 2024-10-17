@@ -65,10 +65,11 @@ function Cart() {
 
                       
                     </div>
+                    <hr className=' bg-slate-400  h-[2px]'> 
+                    </hr>
                 </div>
                    ))      }
-                        <hr className=' bg-slate-400  h-[2px]'> 
-                        </hr>
+                       
                         {/* <div className=' flex my-4  gap-4 '>
                         <div >       
                                 <img className='w-[120px]' src={img}>
