@@ -13,9 +13,7 @@ function App() {
         <Header />
         </div>
           </div>    
-          <div className='mt-[50px]'>
-          <Hero/> 
-          </div>
+         
         <Outlet/>
         <Footer/>
     </>

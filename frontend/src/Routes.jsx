@@ -5,17 +5,20 @@ import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import App from './App'
 import Cart from './pages/cart'
+import Hero from './components/Hero/Hero'
 function Rout() {
   return (
     <div>
          <Routes>
            <Route path='/' element= {<App/>}>
+           <Route path='/' element= {<Hero/>}/>
+           <Route path='/cart' element={<Cart/>}></Route>
            <Route path='/auth' element={<Authlayout/>}>
             <Route path='/auth/login' element={<Login/>}/>
             <Route path ='/auth/register' element= {<Register/>}/>
           </Route>
           </Route>
-          <Route path='/cart' element={<Cart/>}></Route>
+         
         </Routes>
     </div>
 

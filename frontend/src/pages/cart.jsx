@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import img from '../resource/DALL·E 2024-10-11 14.03.50 - A view from behind of a young man sitting at a desk, focused on his laptop. The environment around him is futuristic, with glowing elements and digita.webp'
-
+import  '../App.css'
 const cart= [
             {
                 name:'mens winter jacket ',
@@ -35,38 +35,40 @@ const cart= [
 function Cart() {
     const [prodt,setprdt] = useState(cart)
   return (
-        <div className='flex  mx-[100px]   gap-10  mt-[100px]'> 
-                <div className=' w-[500px]'>
+        
+        <div className='flex  mx-[100px]   gap-5  mt-[100px] mb-[100px]'> 
+                <div>
+                <div className=' w-[500px] overflow-y-scroll scrollbar scrollbar-thin h-[400px]'>
+                       <div className=''>
                         <h2 className=' text-[30px] font-bold'>Your cart </h2>
                         <p className=' font=madium'>Not ready to chekout? Continue Shopping</p>
+                        </div>
                       
                       
-                      
-                   {  
-                   
-                   
+                   {   
                    prodt.map((e,i)=>(
                     <div
                     key={i+e.name+e.size}
-                    className=' flex    gap-4 my-4'>
+                    className=' mr-5 '
+                   >
+                    <div  className=' flex     gap-4 my-4'>
                     <div>       
                         <img className='w-[120px]' src={img}>
                         </img>  
                     </div>
                     <div  className=' w-full'>                                                                                                           
                             
-                            <p className='font-bold'>Mens winter jacket</p>
-                            <p>Size:L</p>
-                            <p>Quantity : 1</p>
+                            <p className='font-bold'>{e.name}</p>
+                            <p>Size:{e.size}</p>
+                            <p>Quantity :{e.quantitu}</p>
                             <div className=' flex   w-full justify-between ' >
-                                <p className='font-bold text-[20px]'>$99</p>
+                                <p className='font-bold text-[20px]'>${e.prize}</p>
                                 <p className=''><u>Remove</u></p>
                             </div>
 
-                      
                     </div>
-                    <hr className=' bg-slate-400  h-[2px]'> 
-                    </hr>
+                    </div>
+                    <hr className=' '/> 
                 </div>
                    ))      }
                        
@@ -91,6 +93,31 @@ function Cart() {
                                 
                         </div> */}
 
+                </div>
+                <div className='mt-20 w-[500px] '>
+                    <h2 className='font-semibold my-2 '>
+                            Order information 
+                    </h2>
+                    <hr className=' bg-black h-[2px]'>
+                    </hr>
+                    <p className='my-2'>
+                        Return policy
+                    </p>
+                    <p className='my-2'>
+                        This our Example return policy which is evrythinh you know about our returns 
+                    </p>
+                    <hr className='bg-black h-[1.5px]' >
+                    </hr>
+                    <p className='my-2'>
+                        Shipping options 
+                    </p>
+                    <hr className='bg-black h-[1.5px]' />
+                    <p className='my-2 '>
+                        Shipping options 
+                    </p>
+                    <hr className='bg-black h-[2px]' />
+                    
+                </div>
                 </div>
                 <div className=' w-[350px] '>
 
