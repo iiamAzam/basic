@@ -10,14 +10,6 @@ import sp from '../../resource/sports.jpg'
 import grr from '../../resource/grocaries.jpg'
 import off from '../../resource/office.jpg'
 
-
-
-
-
-
-
-
-
 const cat=[{
    cat:'Fashion',
    pic: fa,
