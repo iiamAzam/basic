@@ -56,22 +56,31 @@ const cat1=[{
 
 
 
-function Category() {
+function Category({bg}) {
         const select= useSelector(state=>state.product)
         const [prdt, setprdt] = useState([])
-        const [bg,setbg]=useState('bg-white')
-        console.log(cat)
+        // const [bg,setbg]=useState('bg-white')
+
         useEffect(( )=>{
             select.then((res)=>setprdt([...res]))
         },[select])
 
-     const bgsetup=(def)=>{
-                setbg(def)
-     }
+    //  const bgsetup=(def)=>{
+    //             setbg(def)
+    //  }
+
+     const bg_clr=[ 
+       "bg-white",
+       "bg-green-300",
+       " bg-white",
+       "bg-green-300",
+       "bg-green-300"
+
+     ]
         
       
   return (
-    <div className={`${bg} z-0 transition-all duration-500`}>
+    <div className={`${bg_clr[bg]} z-0 p-5  transition-all duration-500`}>
         <div className='px-14 my-8'>
         <p className='text-[20px]     font-semibold'>
                 Category
@@ -86,8 +95,7 @@ function Category() {
         key={e.cat+i}
         titale={e.cat}
         pic={e.pic}
-        bgsetup={bgsetup}
-        color={e.color}
+        color={`${bg_clr[bg]==="bg-green-300"?'text-white':'text-black'}`}
         />
        )) }</div>
        <div className='flex  my-10   items-center justify-center  gap-4'>
@@ -97,8 +105,7 @@ function Category() {
             key={e.cat+i}
             titale={e.cat}
             pic={e.pic}
-            bgsetup={bgsetup}
-            color={e.color}
+            color={`${bg_clr[bg]==="bg-green-300"?'text-white':'text-black'}`}
             />
         ))
        }
