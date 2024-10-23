@@ -70,24 +70,25 @@ function Category({bg}) {
     //  }
 
      const bg_clr=[ 
-       "bg-white",
-       "bg-green-300",
-       " bg-white",
-       "bg-green-300",
-       "bg-green-300"
+   
+       "bg-gradient-to-r from-blue-200 to-blue-200",
+       "bg-gradient-to-r from-blue-200 to-blue-100",
+       "bg-gradient-to-r from-blue-100 to-blue-200",
+       "bg-gradient-to-r from-blue-200 to-blue-100",
+      
 
      ]
         
       
   return (
-    <div className={`${bg_clr[bg]} z-0 p-5  transition-all duration-500`}>
-        <div className='px-14 my-8'>
+    <div className={`${bg_clr[bg]?'bg-secondary':''} z-0 p-5  transition-colors ease-in-out duration-1000`}>
+        <div className='px-1 my-8'>
         <p className='text-[20px]     font-semibold'>
                 Category
         </p>
         </div>
        
-    <div className='flex    items-center justify-center  gap-4'>
+    <div className='flex  backdrop-blur-sm py-8  bg-black/10 rounded-md    items-center justify-center  gap-4'>
     
       {
        cat.map((e,i)=>(
@@ -95,17 +96,17 @@ function Category({bg}) {
         key={e.cat+i}
         titale={e.cat}
         pic={e.pic}
-        color={`${bg_clr[bg]==="bg-green-300"?'text-white':'text-black'}`}
+        color={`${bg_clr[bg]==="bg-black"?'text-white':'text-black'}`}
         />
        )) }</div>
-       <div className='flex  my-10   items-center justify-center  gap-4'>
+       <div className='flex  my-10 backdrop-blur-sm py-8  bg-black/10 rounded-md    items-center justify-center  gap-4'>
        {
         cat1.map((e,i)=>(
             <Card
             key={e.cat+i}
             titale={e.cat}
             pic={e.pic}
-            color={`${bg_clr[bg]==="bg-green-300"?'text-white':'text-black'}`}
+            color={`${bg_clr[bg]==="bg-black"?'text-white':'text-black'}`}
             />
         ))
        }

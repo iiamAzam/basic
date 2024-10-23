@@ -11,10 +11,11 @@ const bg_clr=[
   "bg-gradient-to-r from-green-400 to-blue-600",
   "bg-gradient-to-r from-purple-600 to-pink-500",
   "bg-gradient-to-r from-yellow-500 to-red-500",
+  
 ]
 
 function Hero() {
-  const imges=[img1,img2,img3,img4,img5,]
+  const imges=[img1,img2,img3,img4,img5,img1,img2,img3,img4,img5,img1,img2,img3,img4,img5,]
   const [img,setimg]=useState(0)
   const [bg,setBgIndex]=useState(0)
   const scrollcontainerRef=useRef(null)
@@ -62,7 +63,7 @@ function Hero() {
               THE NEW ERA  OF <br/>
               DRESSING UP
             </p>
-            <button className='border-2 p-2 px-3  text-white text-[20px]    border-white p'>
+            <button className='border-2 p-2 px-3  text-white text-[20px]    border-white '>
                 Shop All
             </button>
             </div>
@@ -73,15 +74,16 @@ function Hero() {
         <Category
         bg={bg}
         />
+        <div className='bg-black/10 rounded-md px-5 mx-5' >
        <div  ref={scrollcontainerRef} className='overflow-x-auto 
-        scrollbar-container
-       whitespace-nowrap scroll-smooth  snap-x snap-mandatory py-5'>
-  <div className='inline-flex space-x-4'>
+        scrollbar-container  
+       scroll-smooth backdrop-blur-sm  px-3  mb-20    snap-x snap-mandatory py-5'>
+  <div className='inline-flex   space-x-4'>
     {imges.map((e, i) => (
       <div
      
         key={e + i}
-        className='w-[300px] flex-shrink-0 flex items-center scroll-smooth justify-center snap-start'
+        className='w-[300px] flex-shrink-0  flex  items-center scroll-smooth justify-center snap-start'
       >
         <img 
           src={e} 
@@ -91,6 +93,7 @@ function Hero() {
       </div>
     ))}
   </div>
+</div>
 </div>
 
         
