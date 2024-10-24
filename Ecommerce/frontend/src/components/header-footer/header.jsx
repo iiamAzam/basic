@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch ,useSelector  } from 'react-redux'
+import { unvarsalsearch} from '../../Strore/uni'
 function Header() {
+  const [inp ,setinp]=useState('')
       const [megamenu,setmegamenu]=useState(false)
+      const dipatch=useDispatch()
+      useEffect(()=>{
+            dipatch(unvarsalsearch(inp))
+      },[dipatch, inp])
+
+
+     
       const [submenu ,setsubmenu]=useState({
            Stories:false,
            Shop:false,
            About:false,
-
+            
       })
       const mouseenter= (menutype)=>{
                    setmegamenu(true)
@@ -50,7 +60,7 @@ function Header() {
             className=' cursor-pointer'>About</span>
 
             <span 
-             className=' cursor-pointer'><input className='focus:outline-none text-10 pl-2  text-black rounded-full' id='search'  placeholder='Search ' />
+             className=' cursor-pointer'><input value={inp} onChange={(e)=>setinp(e.target.value)} className='focus:outline-none text-10 pl-2   text-black rounded-full' id='search'  placeholder='Search ' />
              <span className=' ml-4 cursor-pointer'>Search</span>
              </span>
         </div>

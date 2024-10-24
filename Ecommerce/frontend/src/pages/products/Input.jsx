@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-function Input({val}) {
+function Input({ price,rad }) {
+          const [selected,setselected]=useState('')
+          
+          const selectedprize=(e)=>{
+            setselected(e.target.value)
+            console.log(selected)
+            rad(selected)
+          }
   return (
-    <div>
-        <label>
-            <input
-            type='Radio'
-            value={val}
-            >
-            </input>
-        </label>
+    <div className='flex '>
+      <input
+        name="rad"
+        type="radio"
+        value={price}
+        onChange={selectedprize}
+        id={`radio-${price}`}
+      />
+      <label htmlFor={`radio-${price} `}> $ {price}</label>
     </div>
-  )
+  );  
 }
 
-export default Input
+export default Input;
