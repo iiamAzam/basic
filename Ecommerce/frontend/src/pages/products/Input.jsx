@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Input({ price,rad }) {
-          const [selected,setselected]=useState('')
-          
           const selectedprize=(e)=>{
-            setselected(e.target.value)
-            console.log(selected)
-            rad(selected)
+            rad(e.target.value)
           }
+         
   return (
     <div className='flex '>
       <input

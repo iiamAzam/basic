@@ -39,7 +39,7 @@ function Header() {
 
 
   return (
-    <div className='bg-black py-1 text-white'>
+    <div className='bg-secondary py-1 '>
     <div className=' flex  justify-between p-2'>
         <div className=' relative flex gap-8 ml-[200px]'>
        
@@ -47,7 +47,7 @@ function Header() {
             <span onMouseEnter={()=>{
                 mouseenter('Shop')
             }} 
-            className=' cursor-pointer'>Shop</span>
+            className='cursor-pointer'>Shop</span>
 
             <span onMouseEnter={()=>{
                 mouseenter('Stories')
@@ -60,8 +60,8 @@ function Header() {
             className=' cursor-pointer'>About</span>
 
             <span 
-             className=' cursor-pointer'><input value={inp} onChange={(e)=>setinp(e.target.value)} className='focus:outline-none text-10 pl-2   text-black rounded-full' id='search'  placeholder='Search ' />
-             <span className=' ml-4 cursor-pointer'>Search</span>
+             className=' cursor-pointer'><input value={inp} onChange={(e)=>setinp(e.target.value)} className='focus:outline-none border border-black text-10 pl-2   text-black rounded-full' id='search'  placeholder='Search ' />
+             <span className=' ml-4 cursor-pointer '>Search</span>
              </span>
         </div>
         <div className=' flex gap-7 mr-[80px]'>
@@ -71,26 +71,26 @@ function Header() {
         </div>
         <div>
               {
-                megamenu&&(<div onMouseLeave={mouseleave} className={` transition-all ease-in-out duration-1000 absolute bg-black/50 h-[350px]  backdrop-blur-sm p-2 w-full  left-[0px] top-[48px]`}>
+                megamenu&&(<div onMouseLeave={mouseleave} className={` transition-all ease-in-out duration-1000 absolute  bg-black/20 h-[400px] text-white  backdrop-blur-sm p-2 w-full  left-[0px] top-[48px]`}>
                      <div className={`ml-[200px] mt-10 `}>
 
                      { submenu.Shop &&<ul className={`text-[30px] w-[400px] flex flex-col gap-4  `}>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg inline-block cursor-pointer'>New arrival </li>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg cursor-pointer'>Best sellers</li>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg cursor-pointer'>Limited Edition</li>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg cursor-pointer'>Seasonal sesional sales</li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg inline-block cursor-pointer'>New arrival </li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg cursor-pointer'>Best sellers</li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg cursor-pointer'>Limited Edition</li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg cursor-pointer'>Seasonal sesional sales</li>
                         </ul> } 
                       { submenu.Stories &&<ul className={`text-[30px] w-[450px] flex flex-col gap-4  `}>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg  cursor-pointer'>Reviews & Testimonials </li>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg  cursor-pointer'>Product Launch Highlights</li>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg  cursor-pointer'>Collaboration with Influencers</li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg  cursor-pointer'>Reviews & Testimonials </li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg  cursor-pointer'>Product Launch Highlights</li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg  cursor-pointer'>Collaboration with Influencers</li>
                        
                         </ul> } 
                       { submenu.About &&<ul className={`text-[30px] w-[400px] flex flex-col gap-4  `}>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg   cursor-pointer inline-block'>How It Started </li>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg  cursor-pointer'>Key Milestones</li>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg  cursor-pointer'>Meet the Team</li>
-                        <li className=' px-[10px] hover:bg-black/55 rounded-lg  cursor-pointer'>Seasonal sesional sales</li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg   cursor-pointer inline-block'>How It Started </li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg  cursor-pointer'>Key Milestones</li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg  cursor-pointer'>Meet the Team</li>
+                        <li className=' px-[10px] hover:bg-black/10 rounded-lg  cursor-pointer'>Seasonal sesional sales</li>
                         </ul> } 
 
                       </div>

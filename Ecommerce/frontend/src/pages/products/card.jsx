@@ -1,19 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import {useSelector} from 'react-redux'
-function Card() {
+function Card({cat}) {
         const select=useSelector((select)=>select.search.value)
         const prdct=useSelector((state=> state.product))
+      
         const [product, setproduct]=useState([])
         useEffect(()=>{
-            prdct.then((res)=>setproduct([...res]))
-        },[prdct])
-    
+            
+            prdct.then((res)=>{
+              
+              let filteresaray=[...res]
+             
+              if (select){
+                  filteresaray=filteresaray.filter((e)=>{
+                      return e.title.toLowerCase().includes(select.toLowerCase())
+                  })
+              }
+              if(cat){
+                const [mincat,maxcat]=cat.split('-').map(Number)
+                  filteresaray=filteresaray.filter((e)=>{
+                   return e.price>=mincat&&e.price<=maxcat
+                  })
+              }
+            
+            
+              setproduct(filteresaray)
+            })
+           
+        },[cat, prdct, select])
+            
+       
+         
+ 
+        
         
       
   return (
     <div>
-           
-            <div className='  w-[900px] flex  flex-wrap'>
+           <div className='  w-[900px] flex  flex-wrap'>
                 {
                    product.map((e,)=>(
                         <div key={e.id} className=' w-[200px] m-3 border h-[250px] justify-between   flex '>   

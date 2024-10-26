@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Input from './Input';
 
-function Sidebar({select}) {
-      
+function Sidebar({selectradio}) {
+        
   return (
     <div className='flex text-white  justify-center items-center  flex-col'>
       <div>
@@ -10,10 +10,10 @@ function Sidebar({select}) {
         PRICE RANGE
       </h2>
       <div className='flex flex-col gap-2'>
-      <Input  price="0-50" rad={select} />
-      <Input price="50-100" rad={select} />
-      <Input price="100-150" rad={select} />
-      <Input price="150-200" rad={select} />
+      <Input  price="0-50" rad={selectradio} />
+      <Input price="50-100" rad={selectradio} />
+      <Input price="100-150" rad={selectradio} />
+      <Input price="150-200" rad={selectradio} />
       </div>
     </div>
     </div>

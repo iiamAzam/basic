@@ -2,7 +2,6 @@ import React,{useContext} from 'react'
 import { Outlet, Route, Routes } from 'react-router-dom'
 import Header from './components/header-footer/header'
 import Footer from './components/header-footer/Footer'
-
 function App() {
       
   return (

@@ -16,7 +16,7 @@ function Rout() {
          <Routes>
            <Route path='/' element= {<App/>}>
            <Route path='/' element = {<Hero/>}/>
-           <Route path='/' element= {<Category/>}/>
+           <Route path='/' element= {<Category/>}/> 
            <Route path='/product' element={<Productmain/>}/> 
            <Route path='/cart' element={<Cart/>}></Route>
            <Route path='/auth' element={<Authlayout/>}>
