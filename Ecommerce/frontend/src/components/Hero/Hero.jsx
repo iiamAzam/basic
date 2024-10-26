@@ -5,6 +5,7 @@ import img3 from '../../resource/hero/pexels-olly-5035611.jpg'
 import img4 from '../../resource/hero/pexels-olly-787929.jpg'
 import img5 from '../../resource/hero/pexels-solliefoto-298863.jpg'
 import Category from '../../pages/cart/category'
+import { useNavigate } from 'react-router-dom'
 import '../../app.css'
 const bg_clr=[ 
   "bg-gradient-to-r from-blue-500 to-indigo-700",
@@ -15,6 +16,7 @@ const bg_clr=[
 ]
 
 function Hero() {
+  const navigate=useNavigate()
   const imges=[img1,img2,img3,img4,img5,img1,img2,img3,img4,img5,img1,img2,img3,img4,img5,]
   const [img,setimg]=useState(0)
   const [bg,setBgIndex]=useState(0)
@@ -47,6 +49,7 @@ function Hero() {
         window.addEventListener('scroll',handleScroll)
         return ()=>window.removeEventListener('scroll',handleScroll)
     })
+    
 
 
   return (
@@ -63,7 +66,7 @@ function Hero() {
               THE NEW ERA  OF <br/>
               DRESSING UP
             </p>
-            <button className='border-2 p-2 px-3  text-white text-[20px]    border-white '>
+            <button onClick={()=>navigate('/product')} className='border-2 p-2 px-3  text-white text-[20px]    border-white '>
                 Shop All
             </button>
             </div>

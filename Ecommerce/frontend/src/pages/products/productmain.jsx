@@ -15,7 +15,7 @@ function Productmain() {
       
   return (
     <div className='h-screen flex mt-12'>
-                <div className='w-[200px] justify-between bg-slate-600'>
+                <div className='w-[200px] justify-between border mt-3  bg-secondary'>
                 <Sidebar selectradio={selectradio} />
                 </div>
                 <div className=' scrollbar-container overflow-y-auto '>

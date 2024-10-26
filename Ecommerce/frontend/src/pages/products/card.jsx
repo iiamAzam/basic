@@ -6,7 +6,6 @@ function Card({cat}) {
       
         const [product, setproduct]=useState([])
         useEffect(()=>{
-            
             prdct.then((res)=>{
               
               let filteresaray=[...res]
@@ -18,6 +17,7 @@ function Card({cat}) {
               }
               if(cat){
                 const [mincat,maxcat]=cat.split('-').map(Number)
+
                   filteresaray=filteresaray.filter((e)=>{
                    return e.price>=mincat&&e.price<=maxcat
                   })

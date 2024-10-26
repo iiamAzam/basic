@@ -4,6 +4,8 @@ import { unvarsalsearch} from '../../Strore/uni'
 function Header() {
   const [inp ,setinp]=useState('')
       const [megamenu,setmegamenu]=useState(false)
+      const [search,setsearch]=useState(false)
+
       const dipatch=useDispatch()
       useEffect(()=>{
             dipatch(unvarsalsearch(inp))
@@ -14,10 +16,9 @@ function Header() {
       const [submenu ,setsubmenu]=useState({
            Stories:false,
            Shop:false,
-           About:false,
-            
+           About:false,    
       })
-      const mouseenter= (menutype)=>{
+      const mouseenter=(menutype)=>{
                    setmegamenu(true)
                    switch(menutype){
                       case 'Shop':
@@ -29,7 +30,7 @@ function Header() {
                       case 'About':
                         setsubmenu({...submenu,Shop:false,Stories:false, About:true})
                         break
-
+                     
                    }
                 
       }
@@ -60,11 +61,15 @@ function Header() {
             className=' cursor-pointer'>About</span>
 
             <span 
-             className=' cursor-pointer'><input value={inp} onChange={(e)=>setinp(e.target.value)} className='focus:outline-none border border-black text-10 pl-2   text-black rounded-full' id='search'  placeholder='Search ' />
-             <span className=' ml-4 cursor-pointer '>Search</span>
+             className=' cursor-pointer'><input value={inp} onChange={(e)=>{
+              setinp(e.target.value)
+            }
+              
+              } className='focus:outline-none border border-black text-10 pl-2   text-black rounded-full' id='search'  placeholder='Search ' />
+             <span className=' ml-4 cursor-pointer '></span>
              </span>
         </div>
-        <div className=' flex gap-7 mr-[80px]'>
+        <div className=' flex gap-7 mr-[235px]'>
             <span className=' cursor-pointer'>Cart</span>
             <span className=' cursor-pointer'>Login</span>
             
@@ -92,6 +97,11 @@ function Header() {
                         <li className=' px-[10px] hover:bg-black/10 rounded-lg  cursor-pointer'>Meet the Team</li>
                         <li className=' px-[10px] hover:bg-black/10 rounded-lg  cursor-pointer'>Seasonal sesional sales</li>
                         </ul> } 
+                      {
+                        submenu.Search&&<div>
+                          iam working
+                          </div>
+                      }
 
                       </div>
                   </div>)

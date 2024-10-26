@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-function Input({ price,rad }) {
+function Input({ price, rad ,val}) {
+       
           const selectedprize=(e)=>{
             rad(e.target.value)
           }
@@ -11,6 +12,7 @@ function Input({ price,rad }) {
         name="rad"
         type="radio"
         value={price}
+        checked={val===price}
         onChange={selectedprize}
         id={`radio-${price}`}
       />
