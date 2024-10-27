@@ -1,13 +1,14 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
 import {useForm} from 'react-hook-form'
+import {authlogin} from '../../Strore/Authslice'
+import { useDispatch } from 'react-redux'
 function Login() {
-
+      const submitlogin=useDispatch()
       const {register,handleSubmit}=useForm()  
       const onSubmit = (data) => {
-            console.log(data)
-
+            const {Email,password}=data
+            submitlogin(authlogin({login:{ auth:true, email:Email, password:password}}))
       };
 
 

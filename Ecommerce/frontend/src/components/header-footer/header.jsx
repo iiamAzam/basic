@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch ,useSelector  } from 'react-redux'
 import { unvarsalsearch} from '../../Strore/uni'
+import { useNavigate } from 'react-router-dom'
 function Header() {
+  const navigate = useNavigate()
   const [inp ,setinp]=useState('')
+      const loginstatus=useSelector((state)=>state.auth.login.auth)
       const [megamenu,setmegamenu]=useState(false)
       const [search,setsearch]=useState(false)
 
@@ -44,7 +47,7 @@ function Header() {
     <div className=' flex  justify-between p-2'>
         <div className=' relative flex gap-8 ml-[200px]'>
        
-            <span className=' cursor-pointer'>Ecommerce</span>
+            <span onClick={()=>navigate('/')} className=' cursor-pointer'>Ecommerce</span>
             <span onMouseEnter={()=>{
                 mouseenter('Shop')
             }} 
@@ -71,7 +74,16 @@ function Header() {
         </div>
         <div className=' flex gap-7 mr-[235px]'>
             <span className=' cursor-pointer'>Cart</span>
-            <span className=' cursor-pointer'>Login</span>
+            <span onClick={()=>{
+             if(!loginstatus){
+              navigate('/auth/login')
+             }
+             else{
+              navigate('/')
+             }
+              
+              
+              }} className=' cursor-pointer'>{loginstatus?(<span>Logout</span>):(<span>Login</span>)}</span>
             
         </div>
         <div>
