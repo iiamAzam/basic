@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react";
 
 
 
@@ -10,7 +9,6 @@ const authslice=createSlice({
         email:'',
         password:''},
        register : {
-        auth:false,
         name:'',
         email:'',
         password:''
@@ -23,14 +21,19 @@ const authslice=createSlice({
                 state.login.password=action.payload.login.password
         },
         authregister:(state,action)=>{
-                state.register.auth=action.payload.register.auth
+                state.login.auth=action.payload.register.auth
                 state.register.name=action.payload.register.name
                 state.register.email=action.payload.register.email
                 state.register.password=action.payload.register.password
-        }
+        },
+      authlogout:(state)=>{
+               state.login.auth=false
+               state.login.email=''
+               state.login.password=''
+      }
     }
 })
 
-export const  {authlogin,authregister} = authslice.actions
+export const  {authlogin,authregister,authlogout} = authslice.actions
 
 export default authslice.reducer

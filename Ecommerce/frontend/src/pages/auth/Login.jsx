@@ -1,14 +1,17 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import {authlogin} from '../../Strore/Authslice'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 function Login() {
+      const navigate =useNavigate()
       const submitlogin=useDispatch()
       const {register,handleSubmit}=useForm()  
       const onSubmit = (data) => {
             const {Email,password}=data
             submitlogin(authlogin({login:{ auth:true, email:Email, password:password}}))
+            navigate('/')
       };
 
 
@@ -16,7 +19,7 @@ function Login() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div  className=" border flex drop-shadow-md  flex-col   gap-4  border-black w-[350px] h-[250px] " >
+        <div  className=" border flex drop-shadow-md  flex-col rounded-lg  gap-4  border-black w-[350px] h-[250px] " >
           <div className=' mx-auto '><h1 className='font-extrabold  mt-5  '>Login</h1>
             <div className=' flex mt-5   flex-col gap-4'>
 
@@ -35,7 +38,7 @@ function Login() {
                 })} 
                 placeholder=' Password'
             />  
-             <input type="submit" />
+             <input className=' bg-yellow-200 rounded-md' type="submit" />
             
            
             <h2 className='font-bold'>Note have account? <Link to={'/auth/register'}><span className='text-red-500'>Register here</span></Link> </h2>

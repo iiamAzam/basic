@@ -1,28 +1,30 @@
 import React,{useContext, useState} from 'react'
 import {useForm} from 'react-hook-form'
-import StoreContext from '../../context/context'
-
+import {authregister} from '../../Strore/Authslice'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 export default function Register() {
   const {register , handleSubmit } = useForm()
-  const { userregister}=useContext(StoreContext)
-  const [logdin,setLogdin]=useState(false)
+  const logininfo = useSelector((state)=>state.auth.register)
+  console.log(logininfo)
+  // const { userregister}=useContext(StoreContext)
+        const dispatch=useDispatch()
+        const navigate=useNavigate()
        const submitform=(data)=>{
-          const reg = userregister(data)
-              reg.then ((res)=>{
-                if (res.data.success){
-                      setLogdin(false)
-               }
-               else{
-                   setLogdin(true)
-               }
-              }
-            
-            ).catch((err)=>{console.log(err)})
-         
+                console.log(data)
+        dispatch(dispatch(authregister({register:{
+                  
+                auth:true,
+                    name:data.userName,
+                    email:data.email,
+                    password:data.password
+              }})))
+              navigate('/')
+
         }
 
-  return  !logdin ? (<form onSubmit={handleSubmit(submitform)}>
-    <div  className=" border flex drop-shadow-md  flex-col   gap-4  border-black w-[350px] h-[250px] " >
+  return  <form onSubmit={handleSubmit(submitform)}>
+    <div  className=" border flex drop-shadow-md  flex-col rounded-lg   gap-4  border-black w-[350px] h-[250px] " >
     <div className=' mx-auto '><h1 className='font-extrabold  mt-5  '>Register</h1>
       <div className=' flex mt-5   flex-col gap-4'>
       <input
@@ -44,22 +46,10 @@ export default function Register() {
           {...register('password',{ required: true })}
           placeholder={' Password'}
       /> 
-      <input type='submit'/>
+      <input className=' bg-yellow-200 rounded-lg' type='submit'/>
    
       </div></div>
   </div>
-  </form>):(
-    <div  className=" border flex drop-shadow-md  flex-col   gap-4  border-black w-[350px] h-[250px] " >
-    <div className=' mx-auto '><h1 className='font-extrabold  mt-5  '>Register</h1>
-      <div className=' flex mt-5   flex-col gap-4'>
-
-        <div><p className=' font-bold text-red-600'>Wrong password/email already registered</p></div>
-
-   
-   
-      </div></div>
-  </div>
-    
-  )}
+  </form>}
   
 
