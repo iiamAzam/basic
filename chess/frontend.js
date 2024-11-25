@@ -26,7 +26,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
     const input = document.getElementById('messageInput');
     const messageText = input.value.trim();
     
-
+        console.log(messageText)
 
     if (messageText) {
        
